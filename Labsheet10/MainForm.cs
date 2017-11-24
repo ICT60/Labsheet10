@@ -88,7 +88,22 @@ namespace Labsheet10
 
         void btnRemove_Click(object sender, EventArgs e)
         {
-            arryPerson[currentIndex].Money.Remove(10);
+            var currentMoney = arryPerson[currentIndex].Money.Current;
+            var removeResult = currentMoney - 10;
+
+            if (removeResult < 0)
+            {
+                MessageBox.Show(
+                    "Not enough money..~",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+            else
+            {
+                arryPerson[currentIndex].Money.Remove(10);
+            }
         }
     }
 }

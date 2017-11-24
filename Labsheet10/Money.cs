@@ -2,7 +2,7 @@
 
 namespace Labsheet10
 {
-    class Money : IStatus<decimal>
+    public class Money : IStatus<decimal>
     {
         decimal current;
 
@@ -26,12 +26,13 @@ namespace Labsheet10
 
         public void Restore(decimal value)
         {
-            current += value;
+            current += Math.Abs(value);
         }
 
         public void Remove(decimal value)
         {
-            current = (current - value) < 0 ? 0 : current - value;
+            var temp = (current - Math.Abs(value));
+            current = temp < 0 ? 0 : temp;
         }
     }
 }
